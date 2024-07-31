@@ -1,0 +1,45 @@
+{
+  "id": "openpipe",
+  "description": "OpenPipe Plugin",
+  "credentials": {
+    "type": "object",
+    "properties": {
+      "apiKey": {
+        "type": "string",
+        "label": "API Key",
+        "description": "Find your API key in the OpenPipe project settings",
+        "encrypted": true
+      }
+    },
+    "required": ["apiKey"]
+  },
+  "functions": [
+    {
+      "name": "Report to OpenPipe",
+      "id": "reportToOpenPipe",
+      "type": "guardrail",
+      "supportedHooks": ["afterRequestHook"],
+      "description": [
+        {
+          "type": "subHeading",
+          "text": "Send a request log to OpenPipe."
+        }
+      ],
+      "parameters": {
+        "type": "object",
+        "parameters": {
+          "tags": {
+            "type": "json",
+            "label": "Tags",
+            "description": [
+              {
+                "type": "subHeading",
+                "text": "Tags to distinguish data collected from different prompts. Example: {\"prompt_id\": \"My prompt id\"}"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
